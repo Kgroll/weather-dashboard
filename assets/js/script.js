@@ -13,10 +13,6 @@
 
 
 
-
-
-
-
 function initPage() {
     const inputEl = document.getElementById("city-input");
     const searchEl = document.getElementById("search-button");
@@ -42,9 +38,8 @@ function initPage() {
         .then(function(response){
            // console.log(response);
 //  Parse response to display current conditions
-        //  Method for using "date" objects obtained from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+       
             const currentDate = new Date(response.data.dt*1000);
-          //  console.log(currentDate);
             const day = currentDate.getDate();
             const month = currentDate.getMonth() + 1;
             const year = currentDate.getFullYear();
@@ -66,31 +61,17 @@ function initPage() {
             currentUVEl.innerHTML = "UV Index: ";
             currentUVEl.append(UVIndex);  
             
-        
- 
-      
+              
             console.log(UVIndex.value);
             var displayUvIndexEl = function(index){
                 var uvIndexEl = document.createElement("div");
-                uvIndexEl.textContent = "UV Index: "
-                uvIndexEl.classList = "list-group-item"
+                uvIndexEl.textContent = "UV Index: ";
+                uvIndexEl.classList = "list-group-item";
             
-                uvIndexValue = document.createElement("span")
-                uvIndexValue.textContent = index.value
-            
-                if(index.value <=2){
-                    uvIndexValue.classList = "favorable"
-                }else if(index.value >2 && index.value<=8){
-                    uvIndexValue.classList = "moderate "
-                }
-                else if(index.value >8){
-                    uvIndexValue.classList = "severe"
-                };
-            
-                uvIndexEl.appendChild(uvIndexValue);
-            
-                //append index to current weather
-                weatherContainerEl.appendChild(uvIndexEl);
+                uvIndexValue = document.createElement("span");
+                uvIndexValue.textContent = index.value;
+
+                
             }
         });
             
@@ -138,6 +119,7 @@ function initPage() {
         searchHistory.push(searchTerm);
         localStorage.setItem("search",JSON.stringify(searchHistory));
         renderSearchHistory();
+        inputEl.value = "";
     })
 
     clearEl.addEventListener("click",function() {
