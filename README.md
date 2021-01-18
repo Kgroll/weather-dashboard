@@ -11,7 +11,7 @@ A weather app using Server-Side API's to let you check the weather in any city!
 
 ## Link
 
-https://kgroll.github.io/weather-dashboard/.
+https://kgroll.github.io/weather-dashboard/
 
 
 ## Created by:
